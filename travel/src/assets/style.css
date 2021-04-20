@@ -1,0 +1,154 @@
+html {
+    font-size: 62.5%;
+    overflow:auto;
+}
+body{
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+  
+}
+main{
+    margin: 0 auto;
+    max-width: 90%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    display: block;
+}
+
+h1{
+    text-align: center;
+    font-size: 34px;
+}
+h2{
+    font-size: 24px;
+}
+@media (max-width: 767px) {
+    h1{
+        font-size: 4.427vw;
+    }
+    h2{
+        font-size: 3.3vw;
+    }
+ }
+ .reload {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+ }
+ @media (max-width: 767px) {
+
+ }
+ .btn{
+    width: 30%;
+     font-size: 18px;
+     font-weight: bold;
+     margin-left: 15px;
+     padding: 10px;
+     
+ }
+ .btn:nth-of-type(n+2){
+    margin-left: 0;
+
+}
+.btn:nth-of-type(n+4){
+    margin-top: 10px;
+
+}
+ @media (max-width: 767px) {
+    .btn{
+        width: 45%;
+        font-size: 3.3vw;
+        padding: 5px;
+    
+    }
+    .btn:nth-of-type(n+2){
+        margin-left: 0;
+    
+    }
+    .btn:nth-of-type(n+3){
+        margin-top: 10px;
+    
+    }
+    .btn:nth-of-type(n+4){
+        margin-top: 0;
+    
+    }
+}
+ .btn:first-child{
+    margin-left: 0;
+ }
+.weather {
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling:touch;
+    white-space: nowrap;
+    /* box-shadow: -8px 0 3px -3px #000000 inset; */
+    
+}
+
+.weather::-webkit-scrollbar {
+    background:#aaa;
+    width: 4px;
+    height: 4px;
+   
+}
+.weather::-webkit-scrollbar-thumb{
+    background:rgb(30, 14, 68);
+    height: 5px;
+    border-radius: 50px;
+}
+
+.weather-container{
+    width: 20%;
+    margin: 0 20px;
+}
+.weather__size {
+    width: 60%;
+   
+}
+.weather__title {
+
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+}
+@media (max-width: 767px) {
+    .weather__title{
+        font-size: 3vw;
+    }
+    
+}
+    
+
+.weather__box {
+    background: rgb(30, 14, 68);  
+}
+.weather__text {
+    font-size: 10px;
+    font-weight: bold;
+    margin: 0 auto;
+    text-align: center;
+    white-space: normal;
+    
+
+}
+@media (max-width: 767px) {
+    .weather__text{
+        font-size: 2vw;
+    }
+ }
+
+.weather__contents {
+    margin: 0 auto;
+    text-align: center;
+}
+.weather__city{
+    font-size: 25px;
+}
+.info__name{
+    font-weight: bold;
+}
+
+ 
