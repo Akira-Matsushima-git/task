@@ -7,9 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>観光客向けのシンプルな情報提供ウェブアプリ</title>
     <link rel="stylesheet" href="./src/assets/style.css">
-    <script src="https://unpkg.com/vue@next"></script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 
 </head>
@@ -23,60 +20,68 @@
             <main>
                 <section>
                     <h2>Weather Forecast For Each City</h2>
+                    <div class="lang-Choice">
+                        <div id="google_translate_element"></div>
+                    </div>
 
-                    <div class="reload">
+                    <div class="nav">
                         <button class="btn" data-cityname="Tokyo">Tokyo</button>
                         <button class="btn" data-cityname="Yokohama">Yokohama</button>
                         <button class="btn" data-cityname="Kyoto">Kyoto</button>
                         <button class="btn" data-cityname="Osaka">Osaka</button>
                         <button class="btn" data-cityname="Sapporo">Sapporo</button>
                         <button class="btn" data-cityname="Nagoya">Nagoya</button>
-
                     </div>
-                    
+
                     <div class="contents">
                         <div class="weather__box">
                             <p class="weather__title"> weather</p>
                         </div>
-                        <h3 id="name" class="weather__city">地域を選択ボタンを押してください。</h3>
+                        <h3 id="name" class="weather__city">Press the Select Region button.</h3>
                         <div class="weather">
                             <div class="weather-container">
-
                                 <div class="weather__contents">
                                     <p class="img weather__img"></p>
                                     <p class="text weather__text"></p>
                                 </div>
                             </div>
                             <div class="weather-container">
-
                                 <div class="weather__contents">
                                     <p class="img weather__img"></p>
                                     <p class="text weather__text"></p>
                                 </div>
                             </div>
                             <div class="weather-container">
-
                                 <div class="weather__contents">
                                     <p class="img weather__img"></p>
                                     <p class="text weather__text"></p>
                                 </div>
                             </div>
                             <div class="weather-container">
-
                                 <div class="weather__contents">
                                     <p class="img weather__img"></p>
                                     <p class="text weather__text"></p>
                                 </div>
                             </div>
                             <div class="weather-container">
-
                                 <div class="weather__contents">
                                     <p class="img weather__img"></p>
                                     <p class="text weather__text"></p>
                                 </div>
                             </div>
                             <div class="weather-container">
-
+                                <div class="weather__contents">
+                                    <p class="img weather__img"></p>
+                                    <p class="text weather__text"></p>
+                                </div>
+                            </div>
+                            <div class="weather-container">
+                                <div class="weather__contents">
+                                    <p class="img weather__img"></p>
+                                    <p class="text weather__text"></p>
+                                </div>
+                            </div>
+                            <div class="weather-container">
                                 <div class="weather__contents">
                                     <p class="img weather__img"></p>
                                     <p class="text weather__text"></p>
@@ -85,46 +90,43 @@
                         </div>
                     </div>
                 </section>
-                <section>
 
+                <section>
                     <h2>Nearby Information</h2>
                     <div class="contents">
                         <div class="info__box">
-                            <div style="margin: 20px;">
+                            <div class="info__item">
                                 <div class="info__name"></div>
                                 <div class="info__address"></div>
                             </div>
-                            <div style="margin: 20px;">
+                            <div class="info__item">
                                 <div class="info__name"></div>
                                 <div class="info__address"></div>
                             </div>
-                            <div style="margin: 20px;">
+                            <div class="info__item">
                                 <div class="info__name"></div>
                                 <div class="info__address"></div>
                             </div>
-                            <div style="margin: 20px;">
+                            <div class="info__item">
                                 <div class="info__name"></div>
                                 <div class="info__address"></div>
                             </div>
-                            <div style="margin: 20px;">
+                            <div class="info__item">
                                 <div class="info__name"></div>
                                 <div class="info__address"></div>
                             </div>
-                            
-
-
-
-
+                            <div class="info__item">
+                                <div class="info__name"></div>
+                                <div class="info__address"></div>
+                            </div>
+                            <div class="info__item">
+                                <div class="info__name"></div>
+                                <div class="info__address"></div>
+                            </div>
                         </div>
-
-
-
-
-
-
                 </section>
                 <script>
-
+                //変数設定
                     const btn = document.getElementsByClassName('btn');
                     const name = document.getElementById('name');
                     const weatherText = document.getElementsByClassName('text');
@@ -132,8 +134,6 @@
                     const infoName = document.getElementsByClassName('info__name');
                     const infoAddress = document.getElementsByClassName('info__address');
                     const langSelect = document.getElementsByClassName('lang-select');
-
-
                     const timestampToTime = (getTime) => {
                         const date = new Date(getTime * 1000);
                         const yyyy = `${date.getFullYear()}`;
@@ -145,114 +145,108 @@
 
                         return `${yyyy}/${MM}/${dd} \n${HH}:${mm}`;
                     }
-
                     timestamp = 100000000; // 1億
+
+                    // 言語設定
                     for (i = 0; langSelect.length > i; ++i) {
                         langSelect[i].addEventListener('click', function () {
+                            var new_url = '/index.html?/#googtrans'.replace(/\?.*$/, "");
                             let lang = langSelect[i].getAttribute('data-lang');
-                            window.location = langSelect[i].getAttribute('href');
-                            document.location.reload();
+                            window.location = langSelect[i].getAttribute('href', 'href');
+                            location.reload(new_url);
+                            console.log(long);
+                        })
 
-                        });
                     }
                     function googleTranslateElementInit() {
-                        new google.translate.TranslateElement({
-                            pageLanguage: 'ja',
-                            layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT
-                        }, 'google_translate_element');
+                        new google.translate.TranslateElement({ pageLanguage: 'ja', includedLanguages: 'en,ja,zh-CN,zh-TW,ko,es,fr,it,de,ru', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
                     }
 
-                        for (let i = 0; btn.length > i; ++i) {
+                    // Clickイベント
+                    for (let i = 0; btn.length > i; ++i) { 
+                        function fetchData() {
+                            let urls = [
+                                'https://api.openweathermap.org/data/2.5/forecast?q=' + btn[i].dataset.cityname + '&appid=1520afb72487e8bcce50e50b3faf75be',
+                                'https://api.foursquare.com/v2/venues/search?near=' + btn[i].dataset.cityname + ',JP&limit=5&client_id=ACJWWZQUDO1WK5Y2J4DNMJZCNQUP3VZZFPYZTPUTLAI23JNC&client_secret=2F11CMWGVJUGQE3W1UBGYMA2RTQZITCPHVNAKJABGHIL0UFF&v=20210401'
+                            ]
+                            Promise.all(urls.map(url => fetch(url).then(response => response.json())))
 
-                            function fetchData() {
-                                let urls = [
-                                    'https://api.openweathermap.org/data/2.5/forecast?q=' + btn[i].dataset.cityname + '&appid=1520afb72487e8bcce50e50b3faf75be',
-                                    'https://api.foursquare.com/v2/venues/search?near=' + btn[i].dataset.cityname + ',JP&limit=5&client_id=ACJWWZQUDO1WK5Y2J4DNMJZCNQUP3VZZFPYZTPUTLAI23JNC&client_secret=2F11CMWGVJUGQE3W1UBGYMA2RTQZITCPHVNAKJABGHIL0UFF&v=20210401'
-                                ]
-                                Promise.all(urls.map(url => fetch(url).then(response => response.json())))
-
-                                    .then((result) => {
-                                        Example(result);  //取得したJSONデータを関数に渡す 
-                                    })
-                            }
-
-
-                            btn[i].addEventListener('click', function () {
-                                console.log(btn[i]);
-                                name.innerHTML = btn[i].dataset.cityname;
-                                fetchData();
-                            })
+                                .then((result) => {
+                                    Example(result);
+                                })
                         }
 
-                        function Example(jsonObj) {
+                        //API 地名設定
+                        btn[i].addEventListener('click', function () {
+                            name.innerHTML = btn[i].dataset.cityname;
+                            fetchData();
+                        })
+                    }
 
+                    // レンダリング
+                    function Example(jsonObj) {
 
-                            console.log(jsonObj);
-                            let now = new Date();
-                            
+                        // 天気設定（日付）
+                        for (j = 0; jsonObj[0].list.length > j; ++j) {
+                            for (i = 0; weatherText.length > i; ++i) {
+                                if (i == j) {
+                                    console.log(weatherText[i]);
+                                    weatherText[i].innerHTML = timestampToTime(jsonObj[0].list[j].dt);
+                                }
 
-                            for (j = 0; jsonObj[0].list.length > j; ++j) {
+                                // 天気設定（画像表示）
+                                for (k = 0; weatherImg.length > k; ++k) {
+                                    if (j == k) {
+                                        if (jsonObj[0].list[j + 8].weather[0].main == "Rain") {
+                                            console.log(jsonObj[0].list[j].weather[0].main);
+                                            weatherImg[k].innerHTML = '<img class="weather__size" src="./src/assets/img/rain.svg" alt="Rain">';
+                                        } else if (jsonObj[0].list[j].weather[0].main == "Clear") {
+                                            console.log(jsonObj[0].list[j].weather[0].main);
+                                            weatherImg[k].innerHTML = '<img class="weather__size" src="./src/assets/img/clear.svg" alt="clear">';
+                                        } else if (jsonObj[0].list[j].weather[0].main == "Clouds") {
+                                            console.log(jsonObj[0].list[j].weather[0].main);
+                                            weatherImg[k].innerHTML = '<img class="weather__size" src="./src/assets/img/clouds.svg" alt="clouds">';
 
-                                for (i = 0; weatherText.length > i; ++i) {
-
-
-
-                                    if (i == j) {
-                                        console.log(weatherText[i]);
-                                        weatherText[i].innerHTML = timestampToTime(jsonObj[0].list[j].dt);
-                                    }
-
-                                    for (k = 0; weatherImg.length > k; ++k) {
-                                        if (j == k) {
-                                            if (jsonObj[0].list[j+8].weather[0].main == "Rain") {
-                                                console.log(jsonObj[0].list[j].weather[0].main);
-                                                weatherImg[k].innerHTML = '<img class="weather__size" src="./src/assets/img/rain.svg" alt="Rain">';
-                                            } else if (jsonObj[0].list[j].weather[0].main == "Clear") {
-                                                console.log(jsonObj[0].list[j].weather[0].main);
-                                                weatherImg[k].innerHTML = '<img class="weather__size" src="./src/assets/img/clear.svg" alt="clear">';
-                                            } else if (jsonObj[0].list[j].weather[0].main == "Clouds") {
-                                                console.log(jsonObj[0].list[j].weather[0].main);
-                                                weatherImg[k].innerHTML = '<img class="weather__size" src="./src/assets/img/clouds.svg" alt="clouds">';
-
-                                            }
                                         }
                                     }
                                 }
                             }
-                        
-                            for (i = 0; jsonObj[1].response.venues.length > i; ++i) {
-                                let obj = jsonObj[1].response;
+                        }
 
-                                for (j = 0; infoName.length > j; ++j) {
+                        // 周辺情報レンダリング
+                        for (i = 0; jsonObj[1].response.venues.length > i; ++i) {
+                            let obj = jsonObj[1].response;
 
-                                    if (i == j) {
-                                    
-                                        infoName[j].innerHTML = obj.venues[i].name;
-
-                                    }
+                            for (j = 0; infoName.length > j; ++j) {
+                                if (i == j) {
+                                    infoName[j].innerHTML = obj.venues[i].name;
                                 }
-                               
-                                 
-                                for (m= 0; infoAddress.length > m; m++) {
-                                    let addres=obj.venues[i].location.formattedAddress;
-                                    if(i==m){
-                                    if(addres=='日本'){
-                                        infoAddress[m].innerHTML = '情報がありません';
-                                    }else{
-                                    infoAddress[m].innerHTML = obj.venues[i].location.formattedAddress;
+                            }
+                            
+                            //住所レンダリング
+                            for (k = 0; infoAddress.length > k; k++) {
+                                let addres = obj.venues[i].location.formattedAddress;
+                                if (i == k) {
+                                    if (addres == '日本') {
+                                        infoAddress[k].innerHTML = '情報がありません';
+                                    } else {
+                                        infoAddress[k].innerHTML = obj.venues[i].location.formattedAddress;
                                     }
-                                }
                                 }
                             }
                         }
-
+                    }
                 </script>
             </main>
+            <footer>
+                <div class="footer"></div>
+            </footer>
         </div>
     </div>
-
-
-
+    <script src="https://unpkg.com/vue@next"></script>
+    <script type="text/javascript" async="async"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 
 </body>
