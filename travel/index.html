@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>観光客向けのシンプルな情報提供ウェブアプリ</title>
     <link rel="stylesheet" href="./src/assets/style.css">
-
-
 </head>
 
 <body>
@@ -126,7 +124,8 @@
                         </div>
                 </section>
                 <script>
-                //変数設定
+
+                    //変数設定
                     const btn = document.getElementsByClassName('btn');
                     const name = document.getElementById('name');
                     const weatherText = document.getElementsByClassName('text');
@@ -164,6 +163,8 @@
 
                     // Clickイベント
                     for (let i = 0; btn.length > i; ++i) { 
+
+                        // API設定
                         function fetchData() {
                             let urls = [
                                 'https://api.openweathermap.org/data/2.5/forecast?q=' + btn[i].dataset.cityname + '&appid=1520afb72487e8bcce50e50b3faf75be',
@@ -244,8 +245,7 @@
         </div>
     </div>
     <script src="https://unpkg.com/vue@next"></script>
-    <script type="text/javascript" async="async"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript" async="async" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 
