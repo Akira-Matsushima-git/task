@@ -133,6 +133,7 @@ footer {
     position: absolute;
     bottom: 0;
 }
+
 .lang-Choice{
     margin: 20px 0;
 }
@@ -143,7 +144,7 @@ footer {
 
 @media (max-width: 768px) {
     h1 {
-        font-size:10vw;
+        font-size:8vw;
     }
     h2 {
         font-size: 7vw;

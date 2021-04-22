@@ -127,7 +127,7 @@
 
                     //変数設定
                     const btn = document.getElementsByClassName('btn');
-                    const name = document.getElementById('name');
+                    const name = document.getElementsByClassName('weather__city')[0];
                     const weatherText = document.getElementsByClassName('text');
                     const weatherImg = document.getElementsByClassName('img');
                     const infoName = document.getElementsByClassName('info__name');
@@ -170,8 +170,9 @@
                                 'https://api.openweathermap.org/data/2.5/forecast?q=' + btn[i].dataset.cityname + '&appid=1520afb72487e8bcce50e50b3faf75be',
                                 'https://api.foursquare.com/v2/venues/search?near=' + btn[i].dataset.cityname + ',JP&limit=5&client_id=ACJWWZQUDO1WK5Y2J4DNMJZCNQUP3VZZFPYZTPUTLAI23JNC&client_secret=2F11CMWGVJUGQE3W1UBGYMA2RTQZITCPHVNAKJABGHIL0UFF&v=20210401'
                             ]
-                            Promise.all(urls.map(url => fetch(url).then(response => response.json())))
-
+                            Promise.all(urls.map(url => fetch(url)
+                                .then(response => response.json())
+                                ))
                                 .then((result) => {
                                     Example(result);
                                 })
