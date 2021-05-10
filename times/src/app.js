@@ -11,7 +11,7 @@ Vue.createApp({
       return {
     results: [],
     sections: SECTIONS.split(', '), // create an array of the sections
-    section: 'home', // set default section to 'home'
+    section: '', // set default section to 'home'
     loading: true,
     title: ''
     }
